@@ -6,12 +6,13 @@ import React, { useState } from "react";
  * When the form is submitted, a new post is created and the form contents cleared.
  */
 
-function PostCreate() {
+function PostCreate({ handleCreatePost }) {
   const initialForm = {
-    type: "",
+    type: "Text",
+    content: "",
   };
-  const [type, setType] = useState({ ...initialForm });
-  //if the value of the select is text, 
+  const [dataForm, setDataForm] = useState({ ...initialForm });
+  //if the value of the select is text,
 
   // TODO: When the form is submitted, a new post should be created, and the form contents cleared.
 
@@ -20,16 +21,19 @@ function PostCreate() {
   // - one child `<button>` with a `type="submit"` attribute
   // - one child `<select>` with a `name="type"` attribute
   // - one child `<textarea>` or `<input>` (not both at the same time) with a `name="content"`
-  
+
+  //onChange={handleChange} value={initialForm.type}
   const handleChange = (evt) => {
-    console.log(evt.target.value);
-    console.log(type)
-    setType({...initialForm,[evt.target.name]:evt.target.value})
+    // console.log("event", evt.target.value);
+    // console.log("previous type", dataForm);
+    setDataForm({ ...dataForm, [evt.target.name]: evt.target.value });
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setType({...initialForm});
+    // console.log(dataForm.type, dataForm.content);
+    handleCreatePost(dataForm.type, dataForm.content);
+    setDataForm({ ...initialForm });
   };
   return (
     <form name="create" onSubmit={handleSubmit}>
@@ -37,17 +41,31 @@ function PostCreate() {
         <legend>Create</legend>
         <div>
           <label htmlFor="type">Type: </label>
-          <select id="type" name="type" required={true} onChange={handleChange} value={initialForm.type}>
+          <select id="type" name="type" required={true} onChange={handleChange}>
             <option value="Text">Text</option>
-            <option value="image">Image</option>
+            <option value="Image">Image</option>
           </select>
         </div>
         <div>
           <label htmlFor="content">Content: </label>
-          {type === "Text" ? (
-            <textarea id="content" name="content" required={true} rows={3} />
+          {dataForm.type === "Text" ? (
+            <textarea
+              id="content"
+              name="content"
+              required={true}
+              rows={3}
+              value={dataForm.content}
+              onChange={handleChange}
+            />
           ) : (
-            <input id="content" name="content" type="url" required={true} />
+            <input
+              id="content"
+              name="content"
+              type="url"
+              required={true}
+              value={dataForm.content}
+              onChange={handleChange}
+            />
           )}
         </div>
         <div>

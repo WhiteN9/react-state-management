@@ -11,6 +11,7 @@ function App() {
   const handleCreatePost = (newPost) =>
     setPosts((currentPosts) => [newPost, ...currentPosts]);
 
+    console.log(posts)
   return (
     <div className="App">
       <PostCreate handleCreatePost={handleCreatePost} />
