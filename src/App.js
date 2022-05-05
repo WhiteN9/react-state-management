@@ -11,11 +11,16 @@ function App() {
   const handleCreatePost = (newPost) =>
     setPosts((currentPosts) => [newPost, ...currentPosts]);
 
-    console.log(posts)
+  const handleDeletePost = (indexToDelete) =>
+    setPosts((currentPosts) =>
+      currentPosts.filter((_, index) => index !== indexToDelete)
+    );
+
+  console.log(posts);
   return (
     <div className="App">
       <PostCreate handleCreatePost={handleCreatePost} />
-      <PostList />
+      <PostList posts={posts} handleDeletePost={handleDeletePost} />
     </div>
   );
 }
