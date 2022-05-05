@@ -8,10 +8,12 @@ function App() {
 
   // TODO: Add the ability for the <PostCreate /> component to create new posts.
   // TODO: Add the ability for the <PostList /> component to delete an existing post.
+  const handleCreatePost = (newPost) =>
+    setPosts((currentPosts) => [newPost, ...currentPosts]);
 
   return (
     <div className="App">
-      <PostCreate />
+      <PostCreate handleCreatePost={handleCreatePost} />
       <PostList />
     </div>
   );

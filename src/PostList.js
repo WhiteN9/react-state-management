@@ -10,7 +10,7 @@ function PostList() {
   // TODO: Each post must have className="post" for the tests to work.
   // TODO: Each post must have a delete button - <button name="delete">Delete</button> - that deletes the post when clicked
 
-  return <div className="post-list"></div>;
+  return <div className="post-list">B</div>;
 }
 
 export default PostList;

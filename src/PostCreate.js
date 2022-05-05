@@ -5,8 +5,13 @@ import React, { useState } from "react";
  *
  * When the form is submitted, a new post is created and the form contents cleared.
  */
+
 function PostCreate() {
-  const [type, setType] = useState("Text");
+  const initialForm = {
+    type: "",
+  };
+  const [type, setType] = useState({ ...initialForm });
+  //if the value of the select is text, 
 
   // TODO: When the form is submitted, a new post should be created, and the form contents cleared.
 
@@ -15,16 +20,26 @@ function PostCreate() {
   // - one child `<button>` with a `type="submit"` attribute
   // - one child `<select>` with a `name="type"` attribute
   // - one child `<textarea>` or `<input>` (not both at the same time) with a `name="content"`
+  
+  const handleChange = (evt) => {
+    console.log(evt.target.value);
+    console.log(type)
+    setType({...initialForm,[evt.target.name]:evt.target.value})
+  };
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    setType({...initialForm});
+  };
   return (
-    <form name="create">
+    <form name="create" onSubmit={handleSubmit}>
       <fieldset>
         <legend>Create</legend>
         <div>
           <label htmlFor="type">Type: </label>
-          <select id="type" name="type" required={true}>
-            <option>Text</option>
-            <option>Image</option>
+          <select id="type" name="type" required={true} onChange={handleChange} value={initialForm.type}>
+            <option value="Text">Text</option>
+            <option value="image">Image</option>
           </select>
         </div>
         <div>
