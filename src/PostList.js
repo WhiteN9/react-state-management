@@ -1,24 +1,10 @@
 import React from "react";
+import MakePostItem from "./MakePostItem";
 
 /**
  * Diplays a list of either text or image posts.
  *
  */
-
-function MakePostItem(props) {
-  const {type, content} = props.value;
-  console.log(type === "Text");
-  return (
-    <li>
-      {type === "Text" ? (
-        <p>{content}</p>
-      ) : (
-        <img src={content} alt=""></img>
-      )}
-      <button type="submit">Delete</button>
-    </li>
-  );
-}
 
 function PostList({ posts, handleDeletePost }) {
   // TODO: Diplay the list of posts.
@@ -29,11 +15,11 @@ function PostList({ posts, handleDeletePost }) {
   const createPostList = posts.map((post, index) => {
     console.log(post);
     return (
-        <MakePostItem key={index} value={post} />
+        <MakePostItem key={index} value={post} toggleDelete={handleDeletePost} />
     );
   });
 
-  return <ul className="post-list">{createPostList}</ul>;
+  return <div className="post-list">{createPostList}</div>;
 }
 
 export default PostList;
