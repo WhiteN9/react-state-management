@@ -32,7 +32,8 @@ function PostCreate({ handleCreatePost }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     // console.log(dataForm.type, dataForm.content);
-    handleCreatePost(dataForm.type, dataForm.content);
+    handleCreatePost(dataForm);
+    // handleCreatePost(dataForm['type'], dataForm['content']); //the function only take 1 param
     setDataForm({ ...initialForm });
   };
   return (
