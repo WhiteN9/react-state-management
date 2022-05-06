@@ -17,7 +17,7 @@ import React from "react";
 // why does the button need a name?
 // Base working function
 function MakePostItem({ value: { type }, value: { content }, toggleDelete }) {
-  console.log(type === "Text");
+//   console.log(type === "Text");
   return (
     <div className="post">
       {type === "Text" ? <p>{content}</p> : <img src={content} alt=""></img>}
