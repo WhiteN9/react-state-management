@@ -16,8 +16,8 @@ import React from "react";
 // so only 1 property can be passed in and be destructured?
 // why does the button need a name?
 // Base working function
-function MakePostItem({ value: { type }, value: { content }, toggleDelete }) {
-//   console.log(type === "Text");
+function MakePostItem({ value: { type, content }, toggleDelete }) {
+  //   console.log(type === "Text");
   return (
     <div className="post">
       {type === "Text" ? <p>{content}</p> : <img src={content} alt=""></img>}

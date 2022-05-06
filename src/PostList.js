@@ -12,11 +12,11 @@ function PostList({ posts, handleDeletePost }) {
   // TODO: Each post must have className="post" for the tests to work.
   // TODO: Each post must have a delete button - <button name="delete">Delete</button> - that deletes the post when clicked
 
-  if(!posts) return null;
+  if (!posts) return null;
   const createPostList = posts.map((post, index) => {
     // console.log(post);
     return (
-        <MakePostItem key={index} value={post} toggleDelete={() => handleDeletePost(index)} />
+      <MakePostItem value={post} toggleDelete={() => handleDeletePost(index)} />
     );
   });
 
