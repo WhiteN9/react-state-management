@@ -16,11 +16,15 @@ function PostList({ posts, handleDeletePost }) {
   const createPostList = posts.map((post, index) => {
     // console.log(post);
     return (
-      <MakePostItem value={post} toggleDelete={() => handleDeletePost(index)} />
+      <MakePostItem key={index} value={post} toggleDelete={() => handleDeletePost(index)} />
     );
   });
-
+  
   return <div className="post-list">{createPostList}</div>;
 }
 
 export default PostList;
+
+//or
+//<MakePostItem key={index} {post.type} {post.content} toggleDelete={() => handleDeletePost(index)} />
+//<MakePostItem key={index} {...post} toggleDelete={() => handleDeletePost(index)} />
