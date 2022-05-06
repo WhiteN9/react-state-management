@@ -24,7 +24,9 @@ function PostCreate({ handleCreatePost }) {
 
   //onChange={handleChange} value={initialForm.type}
   const handleChange = (evt) => {
+    
     // console.log("event", evt.target.value);
+    console.log("event", evt.target);
     // console.log("previous type", dataForm);
     setDataForm({ ...dataForm, [evt.target.name]: evt.target.value });
   };
