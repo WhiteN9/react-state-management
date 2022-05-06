@@ -15,7 +15,7 @@ function PostList({ posts, handleDeletePost }) {
   const createPostList = posts.map((post, index) => {
     console.log(post);
     return (
-        <MakePostItem key={index} value={post} toggleDelete={handleDeletePost} />
+        <MakePostItem key={index} value={post} toggleDelete={() => handleDeletePost(index)} />
     );
   });
 
